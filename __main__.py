@@ -37,9 +37,6 @@ class Exp:
                 logger.info('今日投币经验已达成')
                 return
             self.coin(item['aid'])
-        with open("log.log", "r", encoding="utf-8") as log:
-            sendmsgtowx(log.read())
-            print(log.read())
     # 获取用户信息
     def getUserinfo(self):
         try:
@@ -171,6 +168,10 @@ class Exp:
             logger.info('直播银瓜子兑换结果：'+res_silver2Coins['msg'])
 
 Exp()
+
+with open("log.log", "r", encoding="utf-8") as log:
+            sendmsgtowx(log.read())
+            print(log.read())
 
 
 # -*- coding: UTF-8 -*-
