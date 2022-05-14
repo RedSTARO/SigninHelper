@@ -38,6 +38,7 @@ class Exp:
             self.coin(item['aid'])
         with open("log.log", "r", encoding="utf-8") as log:
             sendmsgtowx(log.read())
+            print(log.read())
     # 获取用户信息
     def getUserinfo(self):
         try:
