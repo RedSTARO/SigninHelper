@@ -167,26 +167,28 @@ class Exp:
         else:
             logger.info('直播银瓜子兑换结果：'+res_silver2Coins['msg'])
 
-# Exp()
+# Github Action运行
+Exp()
 
 
-# -*- coding: UTF-8 -*-
-import threading
+# 以下为实体服务器运行
 
-# 任务执行间隔时间，下面是 1s 也就每秒执行一次
-INTERVAL_TIME = 86400
-runningTime = 0
-# INTERVAL_TIME = 10
-def task():
-    # 在这里写下你要执行的命令,例如打印 HelloWorld
-    Exp()
-    global runningTime
-    runningTime += 1
-    logger.info("BilibiliHelper is running! Running time : " + str(runningTime) + " day.")
+# import threading
 
-def cron():
-    task()
-    threading.Timer(INTERVAL_TIME, cron).start()
+# # 任务执行间隔时间，下面是 1s 也就每秒执行一次
+# INTERVAL_TIME = 86400
+# runningTime = 0
+# # INTERVAL_TIME = 10
+# def task():
+#     # 在这里写下你要执行的命令,例如打印 HelloWorld
+#     Exp()
+#     global runningTime
+#     runningTime += 1
+#     logger.info("BilibiliHelper is running! Running time : " + str(runningTime) + " day.")
 
-# 调用 cron 函数，即开始任务
-cron()
+# def cron():
+#     task()
+#     threading.Timer(INTERVAL_TIME, cron).start()
+
+# # 调用 cron 函数，即开始任务
+# cron()
