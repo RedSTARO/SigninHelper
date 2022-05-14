@@ -57,7 +57,7 @@ class Exp:
             logger.info('当前等级：{},当前经验：{},下一级所需经验：{}'.format(level_info['current_level'],level_info['current_exp'],level_info['next_exp']-level_info['current_exp']))
             sendInfo += '当前等级：{},当前经验：{},下一级所需经验：{}'.format(level_info['current_level'],level_info['current_exp'],level_info['next_exp']-level_info['current_exp'] + "\n"
         except:
-            sendmsgtowx()
+#             sendmsgtowx()
             logger.info('请求异常')
             sendInfo += "请求异常" + "\n"                                                
     # 获取关注的up最新发布的视频
