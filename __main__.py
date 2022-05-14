@@ -34,9 +34,10 @@ class Exp:
             exp = self.getCoinTodayExp()
             if exp == 50:
                 logger.info('今日投币经验已达成')
-                sendmsgtowx("今日经验已达成")
                 return
             self.coin(item['aid'])
+        with open("log.log", "r", encoding="utf-8") as log:
+            sendmsgtowx(log.read())
     # 获取用户信息
     def getUserinfo(self):
         try:
@@ -167,14 +168,12 @@ class Exp:
         else:
             logger.info('直播银瓜子兑换结果：'+res_silver2Coins['msg'])
 
-# Github Action运行
 Exp()
 
 
-# 以下为实体服务器运行
-
+# -*- coding: UTF-8 -*-
 # import threading
-
+#
 # # 任务执行间隔时间，下面是 1s 也就每秒执行一次
 # INTERVAL_TIME = 86400
 # runningTime = 0
@@ -185,10 +184,10 @@ Exp()
 #     global runningTime
 #     runningTime += 1
 #     logger.info("BilibiliHelper is running! Running time : " + str(runningTime) + " day.")
-
+#
 # def cron():
 #     task()
 #     threading.Timer(INTERVAL_TIME, cron).start()
-
+#
 # # 调用 cron 函数，即开始任务
 # cron()
