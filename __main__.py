@@ -171,7 +171,7 @@ Exp()
 
 with open("log.log", "r", encoding="utf-8") as log:
             sendmsgtowx(log.read())
-            print(log.read())
+            print("Send " + log.read() + " to WeCHat success.")
 
 
 # -*- coding: UTF-8 -*-
