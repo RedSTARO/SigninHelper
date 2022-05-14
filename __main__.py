@@ -2,6 +2,8 @@ import requests,json
 from log import logger
 from api import coinTodayExp,usernav,mangaSign,attentionVideo,popularVideo,liveSign,coinAdd,videoProgress,videoShare,silverNum,silver2coin
 from setting import bili_jct,coinnum,select_like,headers,SCKEY
+sendInfo = ""
+
 # 通知到微信
 def sendmsgtowx(text='服务器挂掉啦~~',desp=''):
     if SCKEY == '':
@@ -41,6 +43,7 @@ class Exp:
             self.coin(item['aid'])
     # 获取用户信息
     def getUserinfo(self):
+        global sendInfo
         try:
             res = requests.get(url=usernav,headers=headers)
             user_res = json.loads(res.text)['data']
@@ -61,7 +64,7 @@ class Exp:
             sendInfo += "请求异常" + "\n"
     # 获取关注的up最新发布的视频
     def getAttentionVideo(self):
-
+        global sendInfo
         url = attentionVideo+'?uid='+str(self.uid)+'&type_list=8&from=&platform=web'
         res = requests.get(url=url,headers=headers)
         video_list = []
@@ -71,6 +74,7 @@ class Exp:
                 video_list.append({'aid':json.loads(item['card'])['aid'],'cid':json.loads(item['card'])['cid']})
         self.attention_aidList = video_list
     def getCoinTodayExp(self):
+        global sendInfo
         url = coinTodayExp
         res = requests.get(url=url,headers=headers)
         exp = json.loads(res.text)['data']
@@ -78,6 +82,7 @@ class Exp:
         return exp
     # 获取近期热门视频列表
     def getPopularVideo(self):
+        global sendInfo
         url = popularVideo
         res = requests.get(url=url,headers=headers)
         video_list = []
@@ -86,6 +91,7 @@ class Exp:
         self.popular_aidList = video_list
     # B站直播签到
     def liveSign(self):
+        global sendInfo
         try:
             url = liveSign
             res = requests.get(url=url,headers=headers)
@@ -96,6 +102,7 @@ class Exp:
             sendInfo += '请求异常'  + "\n"
     #  通过aid为视频投币
     def coin(self,aid):
+        global sendInfo
         url = coinAdd
         post_data = {
             "aid": aid,
@@ -116,6 +123,7 @@ class Exp:
             sendInfo += '投币失败:' + coinRes['message']  + "\n"
     # 上报视频进度
     def report(self, aid, cid, progres):
+        global sendInfo
         url = videoProgress
         post_data = {
             "aid": aid,
@@ -135,6 +143,7 @@ class Exp:
             sendInfo += '上报视频进度失败：' + Res['message']  + "\n"
     #分享指定av号视频
     def share(self, aid):
+        global sendInfo
         url = videoShare
         post_data = {
             "aid": aid,
@@ -151,6 +160,7 @@ class Exp:
             sendInfo += '每日任务分享视频：' + share_res['message']  + "\n"
     #漫画签到
     def mangaSign(self):
+        global sendInfo
         try:
             url = mangaSign
             post_data = {
@@ -167,6 +177,7 @@ class Exp:
             logger.info('漫画签到异常')
             sendInfo += '漫画签到异常'  + "\n"
     def silverToCoins(self):
+        global sendInfo
         res1 = requests.get(url=silverNum,headers=headers)
         silver_num = json.loads(res1.text)['data']['silver']
         if silver_num < 700:
