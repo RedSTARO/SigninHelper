@@ -2,6 +2,7 @@ import requests,json
 from log import logger
 from api import coinTodayExp,usernav,mangaSign,attentionVideo,popularVideo,liveSign,coinAdd,videoProgress,videoShare,silverNum,silver2coin
 from setting import bili_jct,coinnum,select_like,headers,SCKEY
+print("Start running...")
 
 # 通知到微信
 def sendmsgtowx(text='服务器挂掉啦~~',desp=''):
@@ -38,8 +39,8 @@ class Exp:
             self.coin(item['aid'])
         with open("log.log", "r", encoding="utf-8") as log:
             sendmsgtowx(log.read())
-#             print(log.read())
-            logger.info(log.read())
+            print(log.read())
+#             logger.info(log.read())
     # 获取用户信息
     def getUserinfo(self):
         try:
