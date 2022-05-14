@@ -5,7 +5,8 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
         with:
@@ -19,5 +20,5 @@ jobs:
         env:
           BILIBILICOOKIE: ${{secrets.BILIBILICOOKIE}}
           SEVERSCKEY: ${{secrets.SEVERSCKEY}
-          run: |
-            __main__.py
+        run: |
+          __main__.py
