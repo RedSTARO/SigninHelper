@@ -21,4 +21,5 @@ jobs:
           BILIBILICOOKIE: ${{secrets.BILIBILICOOKIE}}
           SEVERSCKEY: ${{secrets.SEVERSCKEY}
         run: |
-          __main__.py
+          cd ../
+          python __main__.py
