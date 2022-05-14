@@ -2,8 +2,6 @@ import requests,json
 from log import logger
 from api import coinTodayExp,usernav,mangaSign,attentionVideo,popularVideo,liveSign,coinAdd,videoProgress,videoShare,silverNum,silver2coin
 from setting import bili_jct,coinnum,select_like,headers,SCKEY
-print("Start running...")
-sendInfo = ""
 # 通知到微信
 def sendmsgtowx(text='服务器挂掉啦~~',desp=''):
     if SCKEY == '':
@@ -15,6 +13,7 @@ def sendmsgtowx(text='服务器挂掉啦~~',desp=''):
 # 每日获取经验
 class Exp:
     def __init__(self):
+        global sendInfo
         # hasShare = 0
         self.getUserinfo()
         self.liveSign()
@@ -55,11 +54,11 @@ class Exp:
             logger.info('硬币余额：' + str(money))
             sendInfo += "硬币余额:" + str(money) + "\n"
             logger.info('当前等级：{},当前经验：{},下一级所需经验：{}'.format(level_info['current_level'],level_info['current_exp'],level_info['next_exp']-level_info['current_exp']))
-            sendInfo += '当前等级：{},当前经验：{},下一级所需经验：{}'.format(level_info['current_level'],level_info['current_exp'],level_info['next_exp']-level_info['current_exp'] + "\n"
+            sendInfo += '当前等级：{},当前经验：{},下一级所需经验：{}'.format(level_info['current_level'],level_info['current_exp'],level_info['next_exp']-level_info['current_exp']) + "\n"
         except:
 #             sendmsgtowx()
             logger.info('请求异常')
-            sendInfo += "请求异常" + "\n"                                                
+            sendInfo += "请求异常" + "\n"
     # 获取关注的up最新发布的视频
     def getAttentionVideo(self):
 
