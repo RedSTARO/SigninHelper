@@ -11,7 +11,7 @@ bili_jct = cookies['bili_jct']
 SESSDATA = cookies['SESSDATA']
 DedeUserID = cookies['DedeUserID']
 # server酱
-SCKEY = "SCT147622Tnj8mmh4ZgD1T5KyBCNK9IG9W"
+SCKEY = os.environ["severSckey"]
 # 每次投入硬币数量 1 或 2
 coinnum = 1
 # 投币时是否点赞
