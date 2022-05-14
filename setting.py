@@ -2,7 +2,7 @@
 """ 这里填cookie """
 import os
 # myCookie = ""
-myCookie = os.environ["bilibiliCookie"]
+myCookie = os.environ["BILIBILICOOKIE"]
 
 cookies = dict([l.split("=", 1) for l in myCookie.split("; ")])
 
@@ -11,7 +11,7 @@ bili_jct = cookies['bili_jct']
 SESSDATA = cookies['SESSDATA']
 DedeUserID = cookies['DedeUserID']
 # server酱
-SCKEY = os.environ["severSckey"]
+SCKEY = os.environ["SEVERSCKEY"]
 # 每次投入硬币数量 1 或 2
 coinnum = 1
 # 投币时是否点赞
