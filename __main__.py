@@ -37,7 +37,7 @@ class Exp:
                 logger.info('今日投币经验已达成')
                 return
             self.coin(item['aid'])
-        with open("log.log", "r", encoding="utf-8") as log:
+        with open("logs.log", "r", encoding="utf-8") as log:
             sendmsgtowx(log.read())
             print(log.read())
 #             logger.info(log.read())
