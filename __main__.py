@@ -5,12 +5,12 @@ from setting import bili_jct,coinnum,select_like,headers,SCKEY
 sendInfo = ""
 
 # 通知到微信
-def sendmsgtowx(text='服务器挂掉啦~~',desp=''):
+def sendmsgtowx(title,desp):
     if SCKEY == '':
         logger.info('未配置推送微信')
         return
     else:
-        url = "https://sc.ftqq.com/"+SCKEY+".send?text="+text+"&desp="+desp
+        url = "https://sctapi.ftqq.com/"+SCKEY+".send?title="+title+"&desp="+desp
         requests.get(url=url)
 # 每日获取经验
 class Exp:
@@ -201,7 +201,7 @@ class Exp:
 Exp()
 
 
-sendmsgtowx(sendInfo)
+sendmsgtowx('bilibiliHelper' , sendInfo)
 print("Send " + sendInfo + " to WeCHat success.")
 
 
