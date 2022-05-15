@@ -1,3 +1,4 @@
+name: workflow_main
 on:
   workflow_dispatch:
   
