@@ -202,7 +202,7 @@ Exp()
 
 
 sendmsgtowx('bilibiliHelper' , sendInfo)
-print("Send " + sendInfo + " to WeCHat success.")
+print("Send text of log.log to WeCHat success.")
 
 
 # -*- coding: UTF-8 -*-
