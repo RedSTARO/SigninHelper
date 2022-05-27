@@ -26,21 +26,23 @@ class Exp:
         self.share(self.popular_aidList[1]['aid'])
         self.report(self.popular_aidList[1]['aid'],self.popular_aidList[1]['cid'],1000)
         # 投币(关注up主新视频和热门视频)
-        if(coinnum==0):
+        if coinnum==0:
             logger.info('设置为白嫖模式，不再为视频投币')
             sendInfo += "设置为白嫖模式，不再为视频投币\n"
             return
-        if self.money < 5:
-            logger.info('硬币不足5个，终止投币')
-            sendInfo += "硬币不足5个，终止投币\n"
-            return
-        for item in  self.popular_aidList:
+        # if self.money < 1:
+        #     logger.info('硬币不足1个，终止投币')
+        #     sendInfo += "硬币不足1个，终止投币\n"
+        #     return
+        for item in self.popular_aidList:
             exp = self.getCoinTodayExp()
             if exp == 50:
                 logger.info('今日投币经验已达成')
                 sendInfo += "今日投币经验已达成\n"
                 return
-            self.coin(item['aid'])
+            if self.coin(item['aid']) == '投币失败:硬币不足':
+                logger.info("硬币已用完，停止投币\n")
+                return
     # 获取用户信息
     def getUserinfo(self):
         global sendInfo
@@ -106,7 +108,7 @@ class Exp:
         url = coinAdd
         post_data = {
             "aid": aid,
-            "multiply": coinnum,
+            "multiply": 1,
             "select_like": select_like,
             "cross_domain": "true",
             "csrf": bili_jct
@@ -121,6 +123,7 @@ class Exp:
         else:
             logger.info('投币失败:' + coinRes['message'])
             sendInfo += '投币失败:' + coinRes['message']  + "\n"
+            return '投币失败:' + coinRes['message']
     # 上报视频进度
     def report(self, aid, cid, progres):
         global sendInfo
@@ -202,7 +205,7 @@ Exp()
 
 
 sendmsgtowx('bilibiliHelper' , sendInfo)
-print("Send text of log.log to WeCHat success.")
+logger.info("Send text of log.log to WeCHat success.")
 
 
 # -*- coding: UTF-8 -*-
