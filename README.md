@@ -15,3 +15,11 @@ This project implements a script to automatically check in bilibili (comics) to 
 > `BILIBILICOOKIE` can be found using your browser's developer tools.`SEVERSCKEY` can be found in this [URL](https://sct.ftqq.com/upgrade?fr=sc "push sever provider"),this is used to push the log to your wechat.
 ## How does it work? ##
 See the code by yourself, I think python is easy to understand.
+## About ##
+- Amount of code: Total 305 lines of code, 60 lines of comment, 44 lines of blank, 9 files
+
+
+
+
+
+
