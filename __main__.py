@@ -30,9 +30,9 @@ class Exp:
             logger.info('设置为白嫖模式，不再为视频投币')
             sendInfo += "设置为白嫖模式，不再为视频投币\n"
             return
-        if self.money < 2:
-            logger.info('硬币不足，终止投币')
-            sendInfo += "硬币不足，终止投币\n"
+        if self.money < 5:
+            logger.info('硬币不足5个，终止投币')
+            sendInfo += "硬币不足5个，终止投币\n"
             return
         for item in  self.popular_aidList:
             exp = self.getCoinTodayExp()
