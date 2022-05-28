@@ -42,6 +42,7 @@ class Exp:
                 return
             if self.coin(item['aid']) == '投币失败:硬币不足':
                 logger.info("硬币已用完，停止投币\n")
+                sendInfo += "硬币已用完，停止投币\n"
                 return
     # 获取用户信息
     def getUserinfo(self):
