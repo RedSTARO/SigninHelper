@@ -37,12 +37,12 @@ class Exp:
         for item in self.popular_aidList:
             exp = self.getCoinTodayExp()
             if exp == 50:
-                updateDayRemain = int(nextLevelExpNeed/55)
+                updateDayRemain = int(nextLevelExpNeed/55 + 1)
                 logger.info(f'今日投币经验已达成\n预计升级需要{updateDayRemain}天')
                 sendInfo += f'今日投币经验已达成\n预计升级需要{updateDayRemain}天'
                 return
             if self.coin(item['aid']) == '投币失败:硬币不足':
-                updateDayRemain = int(nextLevelExpNeed/15)
+                updateDayRemain = int(nextLevelExpNeed/15 + 1)
                 logger.info(f"硬币已用完，停止投币\n预计升级需要{updateDayRemain}天")
                 sendInfo += f"硬币已用完，停止投币\n预计升级需要{updateDayRemain}天"
                 return
