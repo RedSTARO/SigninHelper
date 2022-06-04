@@ -28,23 +28,23 @@ class Exp:
         # 投币(关注up主新视频和热门视频)
         if coinnum==0:
             logger.info('设置为白嫖模式，不再为视频投币')
-            sendInfo += "设置为白嫖模式，不再为视频投币\n"
+            sendInfo += "设置为白嫖模式，不再为视频投币\n\n"
             return
         # if self.money < 1:
         #     logger.info('硬币不足1个，终止投币')
-        #     sendInfo += "硬币不足1个，终止投币\n"
+        #     sendInfo += "硬币不足1个，终止投币\n\n"
         #     return
         for item in self.popular_aidList:
             exp = self.getCoinTodayExp()
             if exp == 50:
                 updateDayRemain = int(nextLevelExpNeed/55 + 1)
-                logger.info(f'今日投币经验已达成\n预计升级需要{updateDayRemain}天')
-                sendInfo += f'今日投币经验已达成\n预计升级需要{updateDayRemain}天'
+                logger.info(f'今日投币经验已达成 预计升级需要{updateDayRemain}天')
+                sendInfo += f'今日投币经验已达成 预计升级需要{updateDayRemain}天'
                 return
             if self.coin(item['aid']) == '投币失败:硬币不足':
                 updateDayRemain = int(nextLevelExpNeed/15 + 1)
-                logger.info(f"硬币已用完，停止投币\n预计升级需要{updateDayRemain}天")
-                sendInfo += f"硬币已用完，停止投币\n预计升级需要{updateDayRemain}天"
+                logger.info(f"硬币已用完，停止投币 预计升级需要{updateDayRemain}天")
+                sendInfo += f"硬币已用完，停止投币 预计升级需要{updateDayRemain}天"
                 return
     # 获取用户信息
     def getUserinfo(self):
@@ -58,17 +58,17 @@ class Exp:
             level_info = user_res['level_info']
             self.money = money
             logger.info('用户昵称：' + uname)
-            sendInfo += "用户昵称:" + uname + "\n"
+            sendInfo += "用户昵称:" + uname + "\n\n"
             logger.info('硬币余额：' + str(money))
-            sendInfo += "硬币余额:" + str(money) + "\n"
+            sendInfo += "硬币余额:" + str(money) + "\n\n"
             global nextLevelExpNeed
             nextLevelExpNeed = level_info['next_exp']-level_info['current_exp']
             logger.info('当前等级：{},当前经验：{},下一级所需经验：{}'.format(level_info['current_level'],level_info['current_exp'],nextLevelExpNeed))
-            sendInfo += '当前等级：{},当前经验：{},下一级所需经验：{}'.format(level_info['current_level'],level_info['current_exp'],nextLevelExpNeed) + "\n"
+            sendInfo += '当前等级：{},当前经验：{},下一级所需经验：{}'.format(level_info['current_level'],level_info['current_exp'],nextLevelExpNeed) + "\n\n"
         except:
 #             sendmsgtowx()
             logger.info('请求异常')
-            sendInfo += "请求异常" + "\n"
+            sendInfo += "请求异常" + "\n\n"
     # 获取关注的up最新发布的视频
     def getAttentionVideo(self):
         global sendInfo
@@ -103,10 +103,10 @@ class Exp:
             url = liveSign
             res = requests.get(url=url,headers=headers)
             logger.info('直播签到信息：'+json.loads(res.text)['message'])
-            sendInfo += '直播签到信息：'+json.loads(res.text)['message'] + "\n"
+            sendInfo += '直播签到信息：'+json.loads(res.text)['message'] + "\n\n"
         except:
             logger.info('请求异常')
-            sendInfo += '请求异常'  + "\n"
+            sendInfo += '请求异常'  + "\n\n"
     #  通过aid为视频投币
     def coin(self,aid):
         global sendInfo
@@ -123,11 +123,11 @@ class Exp:
         if coinRes['code'] == 0:
             # 投币成功
             logger.info('投币成功')
-            sendInfo += '投币成功'  + "\n"
+            sendInfo += '投币成功'  + "\n\n"
             self.getCoinTodayExp()
         else:
             logger.info('投币失败:' + coinRes['message'])
-            sendInfo += '投币失败:' + coinRes['message']  + "\n"
+            sendInfo += '投币失败:' + coinRes['message']  + "\n\n"
             return '投币失败:' + coinRes['message']
     # 上报视频进度
     def report(self, aid, cid, progres):
@@ -144,11 +144,11 @@ class Exp:
         if Res['code'] == 0:
             # 投币成功
             logger.info('上报视频进度成功')
-            sendInfo += '上报视频进度成功'  + "\n"
+            sendInfo += '上报视频进度成功'  + "\n\n"
             self.getCoinTodayExp()
         else:
             logger.info('上报视频进度失败：' + Res['message'])
-            sendInfo += '上报视频进度失败：' + Res['message']  + "\n"
+            sendInfo += '上报视频进度失败：' + Res['message']  + "\n\n"
     #分享指定av号视频
     def share(self, aid):
         global sendInfo
@@ -162,10 +162,10 @@ class Exp:
         if share_res['code'] == 0:
             self.hasShare = 1
             logger.info('视频分享成功')
-            sendInfo += '视频分享成功'  + "\n"
+            sendInfo += '视频分享成功'  + "\n\n"
         else:
             logger.info('每日任务分享视频：' + share_res['message'])
-            sendInfo += '每日任务分享视频：' + share_res['message']  + "\n"
+            sendInfo += '每日任务分享视频：' + share_res['message']  + "\n\n"
     #漫画签到
     def mangaSign(self):
         global sendInfo
@@ -177,20 +177,20 @@ class Exp:
             res = requests.post(url=url,headers=headers,data=post_data)
             if json.loads(res.text)['code'] == 0:
                 logger.info('漫画签到成功')
-                sendInfo += '漫画签到成功'  + "\n"
+                sendInfo += '漫画签到成功'  + "\n\n"
             else:
                 logger.info('漫画已签到或签到失败')
-                sendInfo += '漫画已签到或签到失败'  + "\n"
+                sendInfo += '漫画已签到或签到失败'  + "\n\n"
         except:
             logger.info('漫画签到异常')
-            sendInfo += '漫画签到异常'  + "\n"
+            sendInfo += '漫画签到异常'  + "\n\n"
     def silverToCoins(self):
         global sendInfo
         res1 = requests.get(url=silverNum,headers=headers)
         silver_num = json.loads(res1.text)['data']['silver']
         if silver_num < 700:
             logger.info('直播银瓜子不足700兑换硬币')
-            sendInfo += '直播银瓜子不足700兑换硬币'  + "\n"
+            sendInfo += '直播银瓜子不足700兑换硬币'  + "\n\n"
             return
         post_data = {
             "csrf_token": bili_jct,
@@ -201,10 +201,10 @@ class Exp:
         res_silver2Coins = json.loads(res2.text)
         if res_silver2Coins['code']==0:
             logger.info('直播银瓜子兑换结果：成功')
-            sendInfo += '直播银瓜子兑换结果：成功'  + "\n"
+            sendInfo += '直播银瓜子兑换结果：成功'  + "\n\n"
         else:
             logger.info('直播银瓜子兑换结果：'+res_silver2Coins['msg'])
-            sendInfo += '直播银瓜子兑换结果：'+res_silver2Coins['msg']  + "\n"
+            sendInfo += '直播银瓜子兑换结果：'+res_silver2Coins['msg']  + "\n\n"
 
 Exp()
 
