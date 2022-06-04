@@ -37,12 +37,12 @@ class Exp:
         for item in self.popular_aidList:
             exp = self.getCoinTodayExp()
             if exp == 50:
-                logger.info(f'今日投币经验已达成\n预计升级需要{(level_info['next_exp']-level_info['current_exp'])/55}天')
-                sendInfo += f'今日投币经验已达成\n预计升级需要{(level_info['next_exp']-level_info['current_exp'])/55}天'
+                logger.info(f'今日投币经验已达成\n预计升级需要{nextLevelExpNeed/55}天')
+                sendInfo += f'今日投币经验已达成\n预计升级需要{nextLevelExpNeed/55}天'
                 return
             if self.coin(item['aid']) == '投币失败:硬币不足':
-                logger.info(f"硬币已用完，停止投币\n预计升级需要{(level_info['next_exp']-level_info['current_exp'])/15}天")
-                sendInfo += f"硬币已用完，停止投币\n预计升级需要{(level_info['next_exp']-level_info['current_exp'])/15}天"
+                logger.info(f"硬币已用完，停止投币\n预计升级需要{nextLevelExpNeed/15}天")
+                sendInfo += f"硬币已用完，停止投币\n预计升级需要{nextLevelExpNeed/15}天"
                 return
     # 获取用户信息
     def getUserinfo(self):
@@ -59,8 +59,10 @@ class Exp:
             sendInfo += "用户昵称:" + uname + "\n"
             logger.info('硬币余额：' + str(money))
             sendInfo += "硬币余额:" + str(money) + "\n"
-            logger.info('当前等级：{},当前经验：{},下一级所需经验：{}'.format(level_info['current_level'],level_info['current_exp'],level_info['next_exp']-level_info['current_exp']))
-            sendInfo += '当前等级：{},当前经验：{},下一级所需经验：{}'.format(level_info['current_level'],level_info['current_exp'],level_info['next_exp']-level_info['current_exp']) + "\n"
+            global nextLevelExpNeed
+            nextLevelExpNeed = level_info['next_exp']-level_info['current_exp']
+            logger.info('当前等级：{},当前经验：{},下一级所需经验：{}'.format(level_info['current_level'],level_info['current_exp'],nextLevelExpNeed))
+            sendInfo += '当前等级：{},当前经验：{},下一级所需经验：{}'.format(level_info['current_level'],level_info['current_exp'],nextLevelExpNeed) + "\n"
         except:
 #             sendmsgtowx()
             logger.info('请求异常')
@@ -207,4 +209,3 @@ Exp()
 
 sendmsgtowx('bilibiliHelper' , sendInfo)
 logger.info("Send text of log.log to WeCHat success.")
-
