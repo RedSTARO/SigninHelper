@@ -37,12 +37,12 @@ class Exp:
         for item in self.popular_aidList:
             exp = self.getCoinTodayExp()
             if exp == 50:
-                logger.info('今日投币经验已达成')
-                sendInfo += "今日投币经验已达成\n"
+                logger.info(f'今日投币经验已达成\n预计升级需要{(level_info['next_exp']-level_info['current_exp'])/55}天')
+                sendInfo += f'今日投币经验已达成\n预计升级需要{(level_info['next_exp']-level_info['current_exp'])/55}天'
                 return
             if self.coin(item['aid']) == '投币失败:硬币不足':
-                logger.info("硬币已用完，停止投币\n")
-                sendInfo += "硬币已用完，停止投币\n"
+                logger.info(f"硬币已用完，停止投币\n预计升级需要{(level_info['next_exp']-level_info['current_exp'])/15}天")
+                sendInfo += f"硬币已用完，停止投币\n预计升级需要{(level_info['next_exp']-level_info['current_exp'])/15}天"
                 return
     # 获取用户信息
     def getUserinfo(self):
