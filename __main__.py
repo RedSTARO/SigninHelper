@@ -7,14 +7,14 @@ import os
 def start():
     num = 0
     getJson()
-    fileList = os.listdir('.\emailFiles')
+    fileList = os.listdir('./emailFiles')
 
 
     for j in range(0, len(fileList)):
         from main import runner
 
         # 判断md5
-        with open(f".\emailFiles\\{fileList[j]}", "r") as f:
+        with open(f"./emailFiles/{fileList[j]}", "r") as f:
             contents = json.load(f)["timeLimit"]
             # print(contents)
             f.close()
