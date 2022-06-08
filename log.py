@@ -1,11 +1,11 @@
 import logging
 # 日志
 def Log():
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    formatter = logging.Formatter('%(asctime)s_%(name)s_%(levelname)s: %(message)s')
     
     logger = logging.getLogger(__name__)
     logger.setLevel(level = logging.INFO)
-    handler = logging.FileHandler("log.log")
+    handler = logging.FileHandler(".\config\log.log")
     handler.setLevel(logging.INFO)
     handler.setFormatter(formatter)
     logger.addHandler(handler)
