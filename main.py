@@ -213,7 +213,7 @@ class Exp:
 
 def runner(fileName):
     global bili_jct,coinnum,select_like,headers,SCKEY
-    with open(f".\emailFiles\\{fileName}", "r") as f:
+    with open(f"./emailFiles/{fileName}", "r") as f:
         contents = json.load(f)
         # print(contents)
         # 3个用户相关参数
