@@ -19,5 +19,8 @@ jobs:
           pip install arrow
           pip install requests
       - name: bilibiliHelper
+        env:
+          EMIALKET: ${{ secrets.EMIALKET }}
+          EMIALADDRESS: ${{ secrets.EMIALADDRESS }}
         run: |
           python __main__.py
