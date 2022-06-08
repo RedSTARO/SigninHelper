@@ -11,7 +11,7 @@ def start():
 
 
     for j in range(0, len(fileList)):
-        if ".json" in j:
+        if os.path.splitext(fileList[j])[-1] == ".json":
             from main import runner
 
     #         # 判断md5
