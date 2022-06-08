@@ -2,7 +2,7 @@ from configGetter import getJson
 import json
 from log import logger
 import os
-import schedule
+# import schedule
 
 def start():
     num = 0
