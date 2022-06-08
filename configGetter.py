@@ -1,4 +1,4 @@
-# 授权码 MBBNQRKFUFYFZWTR
+
 
 # POP3（Post Office Protocol 3），即邮局协议的第3个版本，
 #是电子邮件的第一个离线协议标准。该协议把邮件下载到本地计算机，
@@ -13,11 +13,12 @@ from datetime import datetime
 #引入专门处理时间和日期的模块，arrow是一个轻量级Python库
 import arrow
 from log import logger
+import os
 
 # 输入自己163的邮箱地址。
-user_email_address = 'bilibilicheckin@163.com'
+user_email_address = os.environ["EMIALADDRESS"]
 # 邮箱的授权码，注意：不是登录密码
-user_password = 'MBBNQRKFUFYFZWTR'
+user_password = os.environ["EMIALKET"]
 # 这个是163邮箱的pop3的服务器地址，各个公司的邮箱平台的POP3的服务器地址都是不同的，自己网上查询下即可
 #例如：qq邮箱的pop3服务器地址是：pop.qq.com
 pop_server_host = 'pop.163.com'
