@@ -41,9 +41,9 @@ def start():
             pass
 
 start()
-schedule.every().day.at("07:00:00").do(start)
+# schedule.every().day.at("07:00:00").do(start)
 
-while True:
-    schedule.run_pending()
+# while True:
+#     schedule.run_pending()
 
 # start()
