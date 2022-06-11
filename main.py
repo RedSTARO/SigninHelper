@@ -16,7 +16,7 @@ def sendmsgtowx(title,desp):
 class Exp:
     def __init__(self):
         global sendInfo
-        sendInfo = f"软件剩余天数：{remainTime}"
+        sendInfo = f"软件剩余天数：{remainTime}\n\n"
         # hasShare = 0
         self.getUserinfo()
         self.liveSign()
