@@ -16,7 +16,7 @@ def sendmsgtowx(title,desp):
 class Exp:
     def __init__(self):
         global sendInfo
-        sendInfo = ""
+        sendInfo = f"软件剩余天数：{remainTime}"
         # hasShare = 0
         self.getUserinfo()
         self.liveSign()
@@ -211,8 +211,8 @@ class Exp:
             logger.info('直播银瓜子兑换结果：'+res_silver2Coins['msg'])
             sendInfo += '直播银瓜子兑换结果：'+res_silver2Coins['msg']  + "\n\n"
 
-def runner(fileName):
-    global bili_jct,coinnum,select_like,headers,SCKEY
+def runner(fileName, remainTime_):
+    global bili_jct,coinnum,select_like,headers,SCKEY,remainTime
     with open(f"./emailFiles/{fileName}", "r") as f:
         contents = json.load(f)
         # print(contents)
@@ -220,6 +220,7 @@ def runner(fileName):
     bili_jct = contents['bili_jct']
     SESSDATA = contents['SESSDATA']
     DedeUserID = contents['DedeUserID']
+    remainTime = remainTime_
     # print(bili_jct)
     # print(SESSDATA)
     # print(DedeUserID)
