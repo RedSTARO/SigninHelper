@@ -61,7 +61,7 @@ def parse_email_server(email_server):
     # mails存储了邮件编号列表，
     index = len(mails)
     # 倒序遍历邮件
-    for i in range(index, 0, 1):
+    for i in range(1, index + 1):
         # 倒序遍历邮件，这样取到的第一封就是最新邮件
         resp, lines, octets = email_server.retr(i)
         # lines存储了邮件的原始文本的每一行,
