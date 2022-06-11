@@ -83,6 +83,9 @@ def start():
                     remainTimes = str((end_time - now_time).days)
                 else:
                     continue
+                         else:
+                logger.warning("Unknown time limit, ignore this config file, continue...")
+                continue
 
             logger.info(f"剩余时间: {remainTimes}")
             runner(fileList[j], f"{remainTimes}")
