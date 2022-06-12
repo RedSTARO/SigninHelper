@@ -16,11 +16,17 @@ The assistance video is under the "Releases" section as well, the file name is "
 This version is a trial version, you only have 30 days to try it. If you feel well about it, just contact the author to purchase the unlimited version, thank you!
 Author's e-mail: 822858602@qq.com or view【闲鱼】https://m.tb.cn/h.fvsGjvK?tk=Czte2N9yNwe
 
+## Thanks ##
+Thanks @HRB-YuPai (email: 875345836@qq.com) written this README.
+
 ## How does it work? ##
 the core of this software is developed by Python3, if you are interested in how it works, feel free to download the source code for study purposes only!  
 
+
 # WARNING #
-THIS SOFTWARE IS DEVELOPED BY RedS STAR (QQ: 822858602, e-mail: 822858602@qq.com), ALL RIGHTS RESERVED, ALL UNAUTHORISED COMMERCIAL USE ARE PROHIBITED!!!
+THIS SOFTWARE IS DEVELOPED BY RedSTAR (QQ: 822858602, e-mail: 822858602@qq.com), ALL RIGHTS RESERVED, ALL UNAUTHORISED COMMERCIAL USE ARE PROHIBITED!!!
+
+
 
 
 
