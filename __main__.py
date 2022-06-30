@@ -35,7 +35,7 @@ def start():
             else:
                 logger.warning("Unknown time limit, ignore this config file, continue...")
                 continue
-        expect:
+        except:
             logger.warning("Config file running failed, ignore this config file, continue...")
             continue
 
