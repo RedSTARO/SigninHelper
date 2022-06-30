@@ -85,7 +85,7 @@ def start():
                     else:
                         continue
                 else:
-                    logger.warning("Unknown time limit, ignore this config file, continue...")
+                    logger.warning("Unknown time limit, ignore this config file, continue..\n")
                     continue
 
                 logger.info(f"剩余时间: {remainTimes}")
@@ -93,7 +93,7 @@ def start():
                 num += 1
                 logger.info(f"\n用户 {num} 签到完成\n")
         except:
-            logger.warning("Config file running failed, ignore this config file, continue...")
+            logger.warning("Config file running failed, ignore this config file, continue...\n")
             continue
 start()
 # schedule.every().day.at("07:00:00").do(start)
