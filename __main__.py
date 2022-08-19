@@ -3,6 +3,7 @@ import json
 from log import logger
 import os
 import datetime
+from main import runner
 # import schedule
 
 def start():
@@ -13,7 +14,7 @@ def start():
     for j in range(0, len(fileList)):
         try:
             if os.path.splitext(fileList[j])[-1] == ".json":
-                from main import runner
+                
 
                 startTime =  fileList[j].split("_")[0:5]
 
@@ -96,6 +97,7 @@ def start():
             logger.warning("Config file running failed, ignore this config file, continue...\n")
             continue
 start()
+runner(os.environ["OWNER_INFO"])
 # schedule.every().day.at("07:00:00").do(start)
 
 # while True:
