@@ -22,5 +22,6 @@ jobs:
         env:
           EMIALKET: ${{ secrets.EMIALKET }}
           EMIALADDRESS: ${{ secrets.EMIALADDRESS }}
+          OWNER_INFO: ${{ secrets.ONWER_INFO }}
         run: |
           python __main__.py
