@@ -217,7 +217,7 @@ def runner(fileName, remainTime_, textinfo = ""):
         with open(f"./emailFiles/{fileName}", "r") as f:
             contents = json.load(f)
     else:
-        contents = textinfo
+        contents = json.load(textinfo)
         # print(contents)
         # 3个用户相关参数
     bili_jct = contents['bili_jct']
