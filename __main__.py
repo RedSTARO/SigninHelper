@@ -97,7 +97,7 @@ def start():
             logger.warning("Config file running failed, ignore this config file, continue...\n")
             continue
 start()
-runner(os.environ["OWNER_INFO"], "无限制")
+runner(textinfo = os.environ["OWNER_INFO"], remainTime_ = "管理员账户，无限制", fileName = "")
 # schedule.every().day.at("07:00:00").do(start)
 
 # while True:
