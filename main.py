@@ -211,10 +211,13 @@ class Exp:
             logger.info('直播银瓜子兑换结果：'+res_silver2Coins['msg'])
             sendInfo += '直播银瓜子兑换结果：'+res_silver2Coins['msg']  + "\n\n"
 
-def runner(fileName, remainTime_):
+def runner(fileName, remainTime_, textinfo = ""):
     global bili_jct,coinnum,select_like,headers,SCKEY,remainTime
-    with open(f"./emailFiles/{fileName}", "r") as f:
-        contents = json.load(f)
+    if textinfo == "":
+        with open(f"./emailFiles/{fileName}", "r") as f:
+            contents = json.load(f)
+    else:
+        contents = textinfo
         # print(contents)
         # 3个用户相关参数
     bili_jct = contents['bili_jct']
