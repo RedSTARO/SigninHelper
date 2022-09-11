@@ -1,4 +1,4 @@
-import requests,base64,json,hashlib
+import requests,base64,json,hashlib,os
 from Crypto.Cipher import AES
 def encrypt(key, text):
     cryptor = AES.new(key.encode('utf8'), AES.MODE_CBC, b'0102030405060708')
