@@ -28,10 +28,10 @@ jobs:
           python ./bilibili/__main__.py
        
             
-      - name: NetEase Music
-        env:
-          NETEASE_USER: ${{ secrets.NETEASE_USR }}
-          NETEASE_PWD: ${{ secrets.NETEASE_PSD }}
-        run: |
-          python ./neteaseMusic/checkin.py
+#       - name: NetEase Music
+#         env:
+#           NETEASE_USER: ${{ secrets.NETEASE_USR }}
+#           NETEASE_PWD: ${{ secrets.NETEASE_PSD }}
+#         run: |
+#           python ./neteaseMusic/checkin.py
 
