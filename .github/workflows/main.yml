@@ -61,7 +61,7 @@ jobs:
 
           for ((i=0;i<$user_num;i++))
           do
-          python3 \neteaseMusic\\checkin.py <<EOF
+          python3 ./neteaseMusic/checkin.py <<EOF
           ${user_list[$i]}
           ${pwd_list[$i]}
           EOF
