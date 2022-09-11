@@ -18,6 +18,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install arrow
           pip install requests
+          pip install -r ./neteaseMusic/requirements.txt
       - name: bilibiliHelper
         env:
           EMIALKET: ${{ secrets.EMIALKET }}
@@ -28,42 +29,9 @@ jobs:
        
             
       - name: NetEase Music
+        env:
+          NETEASE_USER: ${{ secrets.EMIALKET }}
+          NETEASE_PWD: ${{ secrets.EMIALADDRESS }}
         run: |
-          pip install -r ./neteaseMusic/requirements.txt
-        
-          user='${{ secrets.NETEASE_USER }}'
-          pwd='${{ secrets.NETEASE_PWD }}'
-        
-          user_list=()
-          pwd_list=()
-
-          IFS="#"
-
-          for u in ${user[*]}
-          do
-          user_list[${#user_list[*]}]=${u}
-          done
-
-          for p in ${pwd[*]}
-          do
-          pwd_list[${#pwd_list[*]}]=${p}
-          done
-
-          user_num=${#user_list[*]}
-          pwd_num=${#pwd_list[*]}
-
-          if [ $user_num != $pwd_num ];then
-          echo "账号和密码个数不对应"
-          exit 1
-          else
-          echo "共有 $user_num 个账号，即将开始签到"
-          fi
-
-          for ((i=0;i<$user_num;i++))
-          do
-          python3 ./neteaseMusic/checkin.py <<EOF
-          ${user_list[$i]}
-          ${pwd_list[$i]}
-          EOF
-          done
+          python ./neteaseMusic/checkin.py
 
