@@ -24,7 +24,7 @@ jobs:
           EMIALADDRESS: ${{ secrets.EMIALADDRESS }}
           OWNER_INFO: ${{ secrets.ONWER_INFO }}
         run: |
-          python .\bilibili\\__main__.py
+          python ./bilibili/__main__.py
        
             
       - name: NetEase Music
