@@ -1,6 +1,6 @@
-# BiliBili Automatic Check-in Assistant
+# Signin Helper
 ## What is this script for? ##
-This small software works for BiliBili (B站) users to automatic check in every day in order to accelerate the increment of the user's credit level.
+This small software works for BiliBili and Netease users to automatic check in every day in order to accelerate the increment of the user's credit level.
 ## How to Use? ##  
 
 1. Download the "bilibiliHelper.zip" file under the "Releases" section;  
