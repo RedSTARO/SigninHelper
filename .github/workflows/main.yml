@@ -29,7 +29,7 @@ jobs:
             
       - name: NetEase Music
         run: |
-          pip install -r requirements.txt
+          pip install -r ./neteaseMusic/requirements.txt
         
           user='${{ secrets.NETEASE_USER }}'
           pwd='${{ secrets.NETEASE_PWD }}'
