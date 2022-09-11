@@ -30,8 +30,8 @@ jobs:
             
       - name: NetEase Music
         env:
-          NETEASE_USER: ${{ secrets.EMIALKET }}
-          NETEASE_PWD: ${{ secrets.EMIALADDRESS }}
+          NETEASE_USER: ${{ secrets.NETEASE_USR }}
+          NETEASE_PWD: ${{ secrets.NETEASE_PSD }}
         run: |
           python ./neteaseMusic/checkin.py
 
