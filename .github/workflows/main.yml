@@ -31,8 +31,8 @@ jobs:
         run: |
           pip install -r requirements.txt
         
-          user='${{ secrets.USER }}'
-          pwd='${{ secrets.PWD }}'
+          user='${{ secrets.NETEASE_USER }}'
+          pwd='${{ secrets.NETEASE_PWD }}'
         
           user_list=()
           pwd_list=()
