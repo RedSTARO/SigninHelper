@@ -1,45 +1,69 @@
+name: workflow_main
+on:
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Init python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.7
-    - name: Sign in
-      run: |
-        pip install -r requirements.txt
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+  
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install arrow
+          pip install requests
+      - name: bilibiliHelper
+        env:
+          EMIALKET: ${{ secrets.EMIALKET }}
+          EMIALADDRESS: ${{ secrets.EMIALADDRESS }}
+          OWNER_INFO: ${{ secrets.ONWER_INFO }}
+        run: |
+          python /bilibili/__main__.py
+       
+            
+      - name: NetEase Music
+        run: |
+          pip install -r requirements.txt
         
-        user='${{ secrets.USER }}'
-        pwd='${{ secrets.PWD }}'
+          user='${{ secrets.USER }}'
+          pwd='${{ secrets.PWD }}'
         
-        user_list=()
-        pwd_list=()
+          user_list=()
+          pwd_list=()
 
-        IFS="#"
+          IFS="#"
 
-        for u in ${user[*]}
-        do
-        user_list[${#user_list[*]}]=${u}
-        done
+          for u in ${user[*]}
+          do
+          user_list[${#user_list[*]}]=${u}
+          done
 
-        for p in ${pwd[*]}
-        do
-        pwd_list[${#pwd_list[*]}]=${p}
-        done
+          for p in ${pwd[*]}
+          do
+          pwd_list[${#pwd_list[*]}]=${p}
+          done
 
-        user_num=${#user_list[*]}
-        pwd_num=${#pwd_list[*]}
+          user_num=${#user_list[*]}
+          pwd_num=${#pwd_list[*]}
 
-        if [ $user_num != $pwd_num ];then
-        echo "账号和密码个数不对应"
-        exit 1
-        else
-        echo "共有 $user_num 个账号，即将开始签到"
-        fi
+          if [ $user_num != $pwd_num ];then
+          echo "账号和密码个数不对应"
+          exit 1
+          else
+          echo "共有 $user_num 个账号，即将开始签到"
+          fi
 
-        for ((i=0;i<$user_num;i++))
-        do
-        python3 checkin.py <<EOF
-        ${user_list[$i]}
-        ${pwd_list[$i]}
-        EOF
-        done
+          for ((i=0;i<$user_num;i++))
+          do
+          python3 /neteaseMusic/checkin.py <<EOF
+          ${user_list[$i]}
+          ${pwd_list[$i]}
+          EOF
+          done
+
