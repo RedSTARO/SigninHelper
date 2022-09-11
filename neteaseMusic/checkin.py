@@ -27,9 +27,9 @@ url="https://music.163.com/weapi/login/cellphone"
 url2="https://music.163.com/weapi/point/dailyTask"
 url3="https://music.163.com/weapi/v1/discovery/recommend/resource"
 logindata={
-    "phone":os.environ["NETEASE_USER"]),
+    "phone":os.environ["NETEASE_USER"],
     "countrycode":"86",
-    "password":md5(os.environ["NETEASE_PWD"])),
+    "password":md5(os.environ["NETEASE_PWD"]),
     "rememberLogin":"true",
 }
 headers = {
