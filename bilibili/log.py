@@ -5,7 +5,7 @@ def Log():
     
     logger = logging.getLogger(__name__)
     logger.setLevel(level = logging.INFO)
-    handler = logging.FileHandler("./config/log.log")
+    handler = logging.FileHandler("../config/log.log")
     handler.setLevel(logging.INFO)
     handler.setFormatter(formatter)
     logger.addHandler(handler)
