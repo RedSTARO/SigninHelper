@@ -9,7 +9,7 @@ from main import runner
 def start():
     num = 0
     getJson()
-    fileList = os.listdir('../emailFiles')
+    fileList = os.listdir('./bilibili/emailFiles')
 
     for j in range(0, len(fileList)):
         try:
