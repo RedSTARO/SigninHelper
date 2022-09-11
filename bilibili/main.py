@@ -214,7 +214,7 @@ class Exp:
 def runner(fileName, remainTime_, textinfo = ""):
     global bili_jct,coinnum,select_like,headers,SCKEY,remainTime
     if textinfo == "":
-        with open(f"./emailFiles/{fileName}", "r") as f:
+        with open(f"./bilibili/emailFiles/{fileName}", "r") as f:
             contents = json.load(f)
     else:
         contents = json.loads(textinfo)
